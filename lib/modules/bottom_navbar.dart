@@ -1,14 +1,20 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get_started/pages/donor_page.dart';
 import 'package:get_started/pages/heroes.dart';
 import 'package:get_started/pages/new_donation.dart';
 import 'package:get_started/pages/profile.dart';
 
+// ignore: must_be_immutable
 class BottomNav extends StatefulWidget {
+  dynamic response;
   BottomNav({
     Key? key,
-  }) : super(key: key);
-
+    required this.response,
+  }) : super(
+          key: key,
+        );
   @override
   _BottomNavState createState() => _BottomNavState();
 }
@@ -16,9 +22,9 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
+  List<Widget> _widgetOptions = <Widget>[
     DonorPage(),
-    Heroes(),
+    const Heroes(),
     StartDonation(),
     ProfilePage(),
   ];

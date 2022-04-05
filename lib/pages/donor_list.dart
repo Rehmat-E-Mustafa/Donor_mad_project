@@ -96,7 +96,7 @@ class _DonarListState extends State<DonarList> {
                 ),
               ),
             ),
-            BottomNav(),
+            //BottomNav(),
           ],
         ),
       ),

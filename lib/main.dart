@@ -5,7 +5,6 @@ import 'package:get_started/pages/heroes.dart';
 import 'package:get_started/pages/donor_page.dart';
 import 'package:get_started/pages/get_started.dart';
 import 'package:get_started/pages/login_page.dart';
-import 'package:get_started/pages/mainmoon.dart';
 import 'package:get_started/pages/new_donation.dart';
 import 'package:get_started/pages/profile.dart';
 import 'pages/profile.dart';

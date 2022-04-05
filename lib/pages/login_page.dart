@@ -20,8 +20,8 @@ class _LoginPageState extends State<LoginPage> {
 
   String? email;
   String? storedPassword;
-  var response;
-  Map? json_response;
+  dynamic response;
+  dynamic json_response;
   Future<void> makePostRequest() async {
     final url = Uri.parse('http://localhost:3000/login_user');
     final headers = {"Content-type": "application/json"};
@@ -29,60 +29,57 @@ class _LoginPageState extends State<LoginPage> {
     response = await post(url, headers: headers, body: json);
     print(response.body);
     json_response = jsonDecode(response.body);
-    Navigator.pushNamed(context, '/donor_page', arguments: json_response);
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Stack(
-            // fit: StackFit.expand,
-            children: [
-              Positioned(
-                  top: -200,
-                  left: -140,
-                  child: Image.asset(
-                    'Group.png',
-                  )),
-              Positioned(
-                  left: 20,
-                  top: 20,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const GetStarted()));
-                    },
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                  )),
-              Positioned(
-                  top: 130,
-                  right: 0,
-                  child: Image.asset(
-                    'killua.png',
-                    width: 200,
-                    height: 200,
-                  )),
-              Positioned(
-                  top: 180,
-                  left: 20,
-                  child: Text(
-                    'Welcome\nBack',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 35,
-                      decoration: TextDecoration.none,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white,
-                    ),
-                  )),
-            ]),
+        Stack(children: [
+          Positioned(
+              top: -200,
+              left: -140,
+              child: Image.asset(
+                'Group.png',
+              )),
+          Positioned(
+              left: 20,
+              top: 20,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const GetStarted()));
+                },
+                child: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              )),
+          Positioned(
+              top: 130,
+              right: 0,
+              child: Image.asset(
+                'killua.png',
+                width: 200,
+                height: 200,
+              )),
+          Positioned(
+              top: 180,
+              left: 20,
+              child: Text(
+                'Welcome\nBack',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 35,
+                  decoration: TextDecoration.none,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.white,
+                ),
+              )),
+        ]),
         Scaffold(
           backgroundColor: Colors.transparent,
           body: Form(
@@ -103,9 +100,6 @@ class _LoginPageState extends State<LoginPage> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Email is required";
-                        }
-                        if (!EmailValidator.validate(value)) {
-                          return "Email is invalid";
                         }
                       },
                       onChanged: (value) {
@@ -146,12 +140,12 @@ class _LoginPageState extends State<LoginPage> {
                                   if (!_formKey.currentState!.validate()) {
                                     return;
                                   } else {
-                                    // makePostRequest();
-                                    // print(response.body);
+                                    makePostRequest();
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => BottomNav()));
+                                            builder: (context) => BottomNav(
+                                                response: json_response)));
                                   }
                                 },
                                 icon: Icon(

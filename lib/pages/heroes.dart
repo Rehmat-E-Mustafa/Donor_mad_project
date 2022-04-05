@@ -30,10 +30,7 @@ class _HeroesState extends State<Heroes> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                 child: IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => BottomNav()));
-                    },
+                    onPressed: () {},
                     icon: Icon(
                       Icons.cancel,
                       size: 40,

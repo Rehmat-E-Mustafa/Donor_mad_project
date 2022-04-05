@@ -11,13 +11,11 @@ import 'package:get_started/pages/login_page.dart';
 import 'package:http/http.dart';
 
 class DonorPage extends StatefulWidget {
+  dynamic response;
   DonorPage({
     Key? key,
-    // required this.response,
+    //required this.response,
   }) : super(key: key);
-
-  final String name = 'Rehmat';
-  // final response;
 
   @override
   _DonorPageState createState() => _DonorPageState();
@@ -39,7 +37,7 @@ class _DonorPageState extends State<DonorPage> {
               height: 80,
               child: ListTile(
                 title: Text(
-                  'Hey, Rehmat',
+                  "Hey, rehmat ",
                   style: const TextStyle(
                     fontSize: 30,
                     color: Colors.white,
